@@ -47,7 +47,7 @@ def preprocess_test(filename):
     #     return df, x, y, date, holiday
     return df
 
-def send_submission(submit_filename):
+def send_submission(submit_filename, res):
     df_sample_submission = pd.read_csv('dataset/sampleSubmission.csv')
     df_sample_submission['Weekly_Sales'] = res
-    df.to_csv(submit_filename, index=False)
+    df_sample_submission.to_csv(submit_filename, index=False)
