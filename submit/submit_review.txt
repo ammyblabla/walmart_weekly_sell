@@ -26,3 +26,8 @@ execution time 1 sec
 (คะแนนห่วยกว่าเดิมนิดหน่อย)
 ปรับโมเดลตามที่เคยบอกว่าจะทำ Linear Regression
 ที่เหลือไม่ได้ปรับอะไรเลยจ้า
+
+submit3-4 21536.66707
+execution time 1 sec
+ใช้ isHoliday เข้ามาช่วย แก้เป็นเลข 0/1 และ 1/2 ตาม true false เฉยๆ
+ที่เหลือยึดตามโมเดล submit1

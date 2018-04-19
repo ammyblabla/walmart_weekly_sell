@@ -1,5 +1,4 @@
 import pandas as pd
-import datetime
 # read data
 def get_Merged(filename):
     df = pd.read_csv(filename)
@@ -21,15 +20,31 @@ def send_xy(df):
     y = df.Weekly_Sales
     return x,y
 
-def preprocess_date(df):
-    df['date_weight'] = df['IsHoliday'].map({True:2, False:1})
-    df = df.drop(columns=['IsHoliday', 'Date'])
-    return df
+def preprocess_date(df, is_return_date_holiday=False):
+    sale_date = df.Date
+    IsHoliday = df.IsHoliday
+    df = df.drop(columns=['Date', 'IsHoliday'])
+    if is_return_date_holiday:
+        return df, sale_date, IsHoliday  
+    else:
+        return df
+
+def preprocess_train(filename, is_return_date_holiday=False):
+    df = get_Merged(filename)
+    df = preprocess_type(df)
+    df, date, holiday = preprocess_date(df,True)
+    x,y = send_xy(df)
+    if is_return_date_holiday:
+        return df, x, y, date, holiday
+    return df, x, y
 
 def preprocess_test(filename):
     df = get_Merged(filename)
     df = preprocess_type(df)
     df = preprocess_date(df)
+    # x,y = send_xy(df)
+    # if is_return_date_holiday:
+    #     return df, x, y, date, holiday
     return df
 
 def send_submission(submit_filename, res):
