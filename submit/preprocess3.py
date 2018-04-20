@@ -4,7 +4,6 @@ import datetime
 def get_Merged(filename):
     df = pd.read_csv(filename)
     df = df.drop(columns=['MarkDown1','MarkDown2','MarkDown3','MarkDown4','MarkDown5','CPI','Unemployment'])
-    df = df.drop(columns=['Dept'])
     return  df
 # print(df)
 
