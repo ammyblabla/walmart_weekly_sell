@@ -1,3 +1,4 @@
+import os
 from sklearn import linear_model
 from preprocess import *
 
@@ -17,7 +18,8 @@ df,x,y = preprocess_train('dataset/trainMerged.csv')
 # df.to_csv('dataset/processing_data.csv', index=False)
 
 # reg = linear_model.Ridge (alpha = 1)
-reg = linear_model.BayesianRidge()
+# reg = linear_model.BayesianRidge()
+reg = linear_model.LassoLars(alpha=.095)
 reg.fit (x, y) 
 
 print(reg.coef_)
@@ -28,6 +30,9 @@ df_test = preprocess_train('dataset/testMerged.csv',is_test=True)
 res = reg.predict(df_test)
 
 
-send_submission('submit/submit8.csv', res)
+send_submission('submit/submit9.csv', res)
 
-# kaggle competitions submit -c walmart-recruiting-store-sales-forecasting -f submit/submit8.csv -m "bayes' model"
+print('sending.....')
+p = os.popen('kaggle competitions submit -c walmart-recruiting-store-sales-forecasting -f submit/submit9.csv -m "adjust alpha"')
+print(p)
+print('finish')

@@ -50,3 +50,7 @@ execution time 1 sec
 submit 8 21238.67932
 execution time 1 sec
 ปรับเป็น bayes' model
+
+submit 9 21189.62276
+execution time 1 sec
+ใช้ LARS Lasso แล้วปรับ alpha เป็น 0.095
