@@ -46,3 +46,7 @@ execution time 1 sec
 ปรับ alpha จากเดิมเป็น 0.5 เป็น 1
 เพื่อให้  robust to collinearity ขึ้น
 ค่าที่ลองมาจากการปรับ alpha ไปเรื่อยๆ
+
+submit 8 21238.67932
+execution time 1 sec
+ปรับเป็น bayes' model
