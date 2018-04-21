@@ -21,14 +21,28 @@ def preprocess_date(df):
     return df
 
 def preprocess_dept(df):
-    df = df.drop(columns=['Dept'])
-    return df
+    depts = df.Dept.unique()
+    depts.sort()
+    dept_template = {}
+    for dept in depts:
+        dept_template[dept] = 0
+    for dept in depts:
+        dept_map = dept_template.copy()
+        dept_map[dept] = 1
+        df['Dept'+dept] = df['Dept'].map(dept_map)
+    df.drop(columns=['Dept'])
 
 
 def send_xy(df):
     x = df.drop(columns=['Weekly_Sales'])
     y = df.Weekly_Sales
     return x,y
+
+def preprocess_test(filename):
+    df = get_Merged(filename)
+    df = preprocess_type(df)
+    df = preprocess_date(df)
+    return df
 
 def send_submission(submit_filename, res):
     df_sample_submission = pd.read_csv('dataset/sampleSubmission.csv')

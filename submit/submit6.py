@@ -23,6 +23,7 @@ df_test = preprocess_test('dataset/testMerged.csv')
 
 res = reg.predict(df_test)
 
-send_submission('submit/submit5.csv', res)
+
+send_submission('submit/submit6.csv', res)
 
 # kaggle competitions submit -c walmart-recruiting-store-sales-forecasting -f submit/submit5.csv -m "delete dept"
